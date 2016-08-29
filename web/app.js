@@ -7,6 +7,7 @@ var map;
 var details;
 var details2 = "";
 var km;
+var id;
 function initMap() {
     details = "";
 
@@ -36,7 +37,6 @@ function initMap() {
         });
         marker.addListener('click', function () {
             infowindow.open(map, marker);
-         
         });
     }
 
@@ -74,13 +74,9 @@ function initMap() {
                         + '</form>'
             });
 
-            addMarker.addListener('click', function () {
-                infowindow.open(map, this);
-               
-            //setTimeout(function(){infowindow.close();}, '3000');
-       
+            addMarker.addListener('mouseover', function () {
+                infowindow.open(map, addMarker);
             });
-            
 
 
             details = details + '<div style="border:1px solid orange;display:inline-block;background-color:orange"><img src="Images/' + value.photo + '.png" alt="" /></div><br>'
@@ -192,10 +188,12 @@ function detailler(id) {
                 + '<input type="text" name="origin" id="origin">'
                 + '<br><br><label>Destination :</label>'
                 + '<input type="text" name="destination" id="destination">'
-                + '<br><br><input type="button" value="Calculer l\'itinéraire" onclick="calculate('+objData2.prix_km+')">'
+                + '<br><br><input type="button" value="Calculer l\'itinéraire" onclick="calculate('+objData2.prix_km+','+objData2.id+')">'
                 + '</form><br><hr>'
                 + '<br><br><div id="recapitulatif"></div>'
-                + '<br><br><div id="panel"></div>';
+                + '<br><br><div id="panel"></div>'
+               
+        ;
 
         $("#details").html(details2);
 
@@ -212,7 +210,7 @@ function detailler(id) {
 
 
 //---------Calculer trajet----------
-calculate = function (km) {
+calculate = function (km,id) {
     origin = document.getElementById('origin').value; // Le point départ
     destination = document.getElementById('destination').value; // Le point d'arrivé
 
@@ -237,7 +235,10 @@ calculate = function (km) {
                 var recap = "Distance: " + Math.ceil(response.routes[0].legs[0].distance.value / 1000) + " km</br>"
                         + "Durée: " + Math.floor(response.routes[0].legs[0].duration.value / 3600) + " h " + Math.ceil((response.routes[0].legs[0].duration.value % 3600) / 60) + " min"
                         + "<br>Prix total: " + Math.ceil((response.routes[0].legs[0].distance.value / 1000) * km)+" euro(s)"
-                        +'<br><button style="position:absolute;top:350px;left:740px">Reserver</button>';
+                        +'<br><button style="position:absolute;top:350px;left:740px">Reserver</button>'
+                        +'<br><button  id="payement" style="position:absolute;top:350px;left:600px" onclick="payer('+id+')">Payer la course</button>'
+                            +'<div id ="resultpayer"></div>' ;
+                        
                 
                 $('#recapitulatif').html(recap);
 
@@ -253,8 +254,42 @@ function effacer() {
 }
 
 
-/*
- 50.610005         3.154671
- 50.6012893        3.1314967
- 50.591237         3.125834
- */
+/****PAYEMENT*****/
+
+function payer(id){
+
+ // Au clic sur le bouton #search je lance la fonction
+$('#payement').on('click', function(){
+    
+   
+    // J'initialise le variable box
+    var box = $('#resultpayer');
+
+    // Je définis ma requête ajax
+    $.ajax({
+        
+        //Methode Post
+        method: "POST",
+
+        // Adresse à laquelle la requête est envoyée
+         url: "PayerConducteurServlet?id="+id ,
+
+        // Le délai maximun en millisecondes de traitement de la demande
+       timeout: 4000,
+
+        // La fonction à apeller si la requête aboutie
+        success: function (data) {
+            // Je charge les données dans box
+            box.html(data+"Payement validé");
+        },
+
+        // La fonction à appeler si la requête n'a pas abouti
+        error: function() {
+            // J'affiche un message d'erreur
+            box.html("Désolé, Payement refusé.");
+        }
+
+    });
+
+});
+}

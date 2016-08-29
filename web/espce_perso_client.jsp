@@ -13,7 +13,13 @@
     </head>
     <body>
         <h2>Mon espace personnel</h2>
-        
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
         <a href="map">Liste des chauffeurs</a>
+        <h2>Mon historique</h2>
     </body>
 </html>
