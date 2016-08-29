@@ -33,12 +33,12 @@ public class ConnexionClientServlet extends HttpServlet {
         
          //Récuperer params formulaire
         String login = req.getParameter("login");
-        String mdp = req.getParameter("mdp");
+        String mdp = req.getParameter("password");
 
         //Récuperer l'utilisateur correspondant en BDD
         //new UtilisateurService().rechercheParLoginEtMdp(login, mdp);
-        List<Client> client = new ClientService().rechercheParLoginEtMdp(login, mdp);
-        //resp.sendRedirect("espace_personnel");
+        Client client = new ClientService().rechercheParLoginEtMdp(login, mdp);
+        resp.sendRedirect("espace_personnel_client");
     }
 
     

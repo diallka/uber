@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author pro
  */
-@WebServlet(name = "EspacePersoServlet", urlPatterns = {"/espace_personnel"})
+@WebServlet(name = "EspacePersoServlet", urlPatterns = {"/espace_personnel_client"})
 public class EspacePersoClientServlet extends HttpServlet {
 
     @Override

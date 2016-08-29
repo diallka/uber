@@ -15,10 +15,10 @@ import ubber.entity.Client;
  */
 public class ClientService {
 
-     //On recherche un utilisateur existant pour le connecter
-    public List<Client> rechercheParLoginEtMdp(String login, String password) {
+    //On recherche un utilisateur existant pour le connecter
+    public Client rechercheParLoginEtMdp(String login, String password) {
    
-        return (List<Client>) new ClientDAO().rechercheParLoginEtMdp(login, password);
+        return new ClientDAO().rechercheParLoginEtMdp(login, password);
     }
 
     //On gere la verifiaction et l'inscription

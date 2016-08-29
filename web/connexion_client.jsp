@@ -20,9 +20,9 @@
             </div>
             <h2>Se connecter</h2>
             <label for="login">Identifiant</label>
-            <input type="text" name="login" id="login"/> <br/><br/>
+            <input type="text" name="login" /> <br/><br/>
             <label for="pass">Mot de passe</label>
-            <input type="password" name="password" id="password"/> <br/><br/>
+            <input type="password" name="password" /> <br/><br/>
             <input type="submit" value="Sign in" /> <br/><br/>
             <div align="right"><a href="inscription_client"><h2>S' inscrire?</h2></a></div>
         </form>

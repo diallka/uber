@@ -17,12 +17,12 @@ import ubber.entity.Client;
  */
 public class ClientDAO {
     
-        //Rechercher utilisateur existant par login et mdp et on le connecte
+       //Rechercher utilisateur existant par login et mdp et on le connecte
     public Client rechercheParLoginEtMdp(String login, String password) {
        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
-       Query query = em.createQuery("SELECT u FROM Client u WHERE u.login=:monLogin AND u.password=:monMdp");
-       query.setParameter("monLogin", login);
-       query.setParameter("monMdp", password);
+       Query query = em.createQuery("SELECT c FROM Client c WHERE c.login=:sonLogin AND c.password=:sonMdp");
+       query.setParameter("sonLogin", login);
+       query.setParameter("sonMdp", password);
        return (Client) 
                query.getSingleResult();
     }

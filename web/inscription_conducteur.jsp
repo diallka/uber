@@ -43,6 +43,10 @@
                 <label for="genre">Sexe</label>
                 <input type="radio" name="genre" value="HOMME" checked> M
                 <input type="radio" name="genre" value="FEMME"> F<br/><br/>
+                <label for="long">Longitude</label>
+                <input type="text" name="long"/> <br/><br/>
+                <label for="lat">Lattitude</label>
+                <input type="text" name="lat"/> <br/><br/>
                 <label for="login">Identifiant</label>
                 <input type="text" name="login"/><br/><br/>
                 <label for="password">Mot de passe</label>

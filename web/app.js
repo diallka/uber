@@ -36,6 +36,7 @@ function initMap() {
         });
         marker.addListener('click', function () {
             infowindow.open(map, marker);
+         
         });
     }
 
@@ -73,9 +74,13 @@ function initMap() {
                         + '</form>'
             });
 
-            addMarker.addListener('mouseover', function () {
-                infowindow.open(map, addMarker);
+            addMarker.addListener('click', function () {
+                infowindow.open(map, this);
+               
+            //setTimeout(function(){infowindow.close();}, '3000');
+       
             });
+            
 
 
             details = details + '<div style="border:1px solid orange;display:inline-block;background-color:orange"><img src="Images/' + value.photo + '.png" alt="" /></div><br>'

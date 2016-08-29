@@ -39,8 +39,10 @@ public class Conducteur implements Serializable {
     private Date date_inscription;
     @Enumerated(EnumType.STRING)
     private Disponible disponible;
-    private float position_latitude;
-    private float position_longitude;
+    
+    private double position_latitude;
+    private double position_longitude;
+   
     private String login;
     private String password;
     private String adresse_demandee;
@@ -128,22 +130,24 @@ public class Conducteur implements Serializable {
         this.disponible = disponible;
     }
 
-    public float getPosition_latitude() {
-        return position_latitude;
-    }
-
-    public void setPosition_latitude(float position_latitude) {
-        this.position_latitude = position_latitude;
-    }
-
-    public float getPosition_longitude() {
+    public double getPosition_longitude() {
         return position_longitude;
     }
 
-    public void setPosition_longitude(float position_longitude) {
+    public void setPosition_longitude(double position_longitude) {
         this.position_longitude = position_longitude;
     }
 
+    public double getPosition_latitude() {
+        return position_latitude;
+    }
+
+    public void setPosition_latitude(double position_latitude) {
+        this.position_latitude = position_latitude;
+    }
+
+ 
+  
     public String getLogin() {
         return login;
     }
