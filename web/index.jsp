@@ -1,3 +1,11 @@
+<%-- 
+    Document   : index
+    Created on : 30 août 2016, 20:37:39
+    Author     : pro
+--%>
+<!--ajouter library jstl sinon $.. ne fonctionne pas-->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,8 +48,9 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                         Menu <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand page-scroll" href="#page-top">
-                        <i class="fa fa-play-circle"></i> <span class="light">Départ</span> Immédiat !
+                    <a class="navbar-brand page-scroll" >
+                        <a href="inscription_conducteur"><button type="button" class="btn btn-success ">Devenez chauffeur</button></a>
+                        
                     </a>
                 </div>
 
@@ -52,15 +61,16 @@
                         <li class="hidden">
                             <a href="#page-top"></a>
                         </li>
+                        
+                            
                         <li>
-                            <a class="page-scroll" href="#about">A propos</a>
+                            <a class="page-scroll" href="#chauffeurs">Chauffeurs</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#download">Téléchargement</a>
+                            <a class="page-scroll" href="#passagers">Passagers</a>
                         </li>
-                        <li>
-                            <a class="page-scroll" href="#contact">Contact</a>
-                        </li>
+                        
+                        <li><a class="alert-link"  href="connexion">CONNEXION</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -76,8 +86,8 @@
                         <div class="col-md-8 col-md-offset-2">
                             <h1 class="brand-heading">Yaobber!</h1>
                             <p class="intro-text">Un clic, et je me déplace librement pour pas cher.</p>
-                            <a href="#about" class="btn btn-circle page-scroll">
-                                <i class="fa fa-angle-double-down animated"></i>
+                            <a href="#chauffeurs" class="btn btn-circle page-scroll">
+                                <i class="fa fa-angle-down animated"></i>
                             </a>
                         </div>
                     </div>
@@ -86,23 +96,48 @@
         </header>
 
         <!-- About Section -->
-        <section id="about" class="container content-section text-center">
+        <section id="chauffeurs" class="container content-section text-center">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h2>A propos de Move me!</h2>
-                    <p>Move me! est un site à la façon Uber <a href="#">la page de description</a>.Vous pouvez à tout moment solliciter un conducteur connecté.</p>
+                
+                <div class="col-lg-5 col-lg-offset-0" style="text-align: left">
+                    
+                    <h3>Une activité qui s'adapte à vos besoins
+                Vous êtes votre propre patron et conduisez quand vous le souhaitez</h3>
+                    <p style="font-size: 20px">Fonctionnement Une journée au volant Lorsque vous êtes prêt 
+                        à prendre la route, ouvrez l'application : vous commencerez 
+                        à recevoir des demandes de courses. Nous vous indiquons votre 
+                        passager et vous guidons vers le lieu de prise en charge, puis 
+                        vers la destination de votre passager. Une fois la course terminée, 
+                        nous recherchons une nouvelle commande à proximité. Vous pouvez choisir 
+                        de faire une pause ou de terminer votre journée quand vous le souhaitez, 
+                        simplement en fermant l'application.</p>
+                   
+                   
+                    
+                 
+                    <div class="col-lg-5 col-lg-offset-0" style="margin-left: 120%; margin-top: -125%">
+                  
+                    <img src="Images/uber_chauf.png" />
+                    </div>
                     </div>
             </div>
         </section>
 
         <!-- Download Section -->
-        <section id="download" class="content-section text-center">
+        <section id="passagers" class="content-section text-center">
             <div class="download-section">
                 <div class="container">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <h2>Télécharger Move me!</h2>
-                        <p>Allez sur Google play.</p>
-                        <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Page de téléchargement</a>
+                        <h2>Déplacez-vous simplement,
+                        en un clic
+                        Partout, à tout instant</h2>
+                        <p>Des courses à tous les prix
+                            En toute occasion</p>
+                        <a href="inscription_client" class="btn btn-default btn-lg">Inscrivez vous dès aujourd'hui</a>
+                     <br/><br/><br/>
+                        <a href="#" class="btn btn-circle page-scroll">
+                                <i class="fa fa-angle-up animated"></i>
+                            </a>
                     </div>
                 </div>
             </div>
@@ -154,7 +189,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
         <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC95GpgAzzfx4qDEDw-_G76aMlpwtvoSc&sensor=false"></script>
 
         <!-- Theme JavaScript -->
         <script src="js/grayscale.min.js"></script>
