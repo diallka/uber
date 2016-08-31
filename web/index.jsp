@@ -175,7 +175,7 @@
         <!-- Footer -->
         <footer>
             <div class="container text-center">
-                <p>Copyright &copy; www.krymo.fr 2016</p>
+                <p>Copyright &copy; </p>
             </div>
         </footer>
 
