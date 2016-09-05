@@ -44,4 +44,22 @@ public class ConducteurDAO {
         em.getTransaction().commit();
     }
     
+     //Rechercher utilisateur existant par login et mdp et on le connecte
+    public Conducteur connecterParLoginEtMdp(String login, String password) {
+       EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+       Query query = em.createQuery("SELECT c FROM Conducteur c WHERE c.login=:monLogin AND c.password=:monMdp");
+       query.setParameter("monLogin", login);
+       query.setParameter("monMdp", password);
+       return (Conducteur) 
+               query.getSingleResult();
+    }
+
+    //Test....................................................
+    public Conducteur recupererIdParLogin(String login) {
+         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        Query query=em.createQuery("SELECT c FROM Conducteur c WHERE c.login=:log");
+        query.setParameter("log", login);
+        return (Conducteur)query.getSingleResult();
+    }
+    //Fin test...............
 }

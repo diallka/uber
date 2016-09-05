@@ -42,4 +42,11 @@ public class ClientDAO {
         em.getTransaction().commit();
     }
     
+      public Client RecupererUnClient(int id) {
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        Query query=em.createQuery("SELECT c FROM Client c WHERE c.id=:un");
+        query.setParameter("un", id);
+        return (Client)query.getSingleResult();
+    }  
+    
 }

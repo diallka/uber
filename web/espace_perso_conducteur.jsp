@@ -1,3 +1,6 @@
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -170,7 +173,13 @@
         </div>
     </div>
     
-
+    <div>
+        <button id="accepter">Accepter</button> <br/>
+        <button id="refuser">Refuser</button>
+    </div>
+    
+    <h3>Historique Commandes</h3>
+    
 <!-- jQuery -->
 <script src="vendor/jquery/jquery.min.js"></script>
 

@@ -15,11 +15,7 @@ import ubber.entity.Conducteur;
  */
 public class ConducteurService {
 
-     //On recherche un utilisateur existant pour le connecter
-    public List<Conducteur> rechercheParLoginEtMdp(String login, String password) {
-   
-        return new ConducteurDAO().rechercheParLoginEtMdp(login, password);
-    }
+    
 
     //On gere la verification et l'inscription
     public void inscription(Conducteur conducteur) {
@@ -32,4 +28,16 @@ public class ConducteurService {
         // s'il n'existe pas on le crée
         dao.creerUtilisateur(conducteur);
     }
+    
+     //On recherche un utilisateur existant pour le connecter
+    public Conducteur connecterParLoginEtMdp(String login, String password) {
+   
+        return new ConducteurDAO().connecterParLoginEtMdp(login, password);
+    }
+//Test
+    public Conducteur recupererIdParLogin(String login) {
+        
+        return new ConducteurDAO().recupererIdParLogin(login);
+    }
+//Fin test
 }

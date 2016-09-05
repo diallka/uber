@@ -19,7 +19,7 @@
         <div>
             
         </div>
-        <a href="map">Liste des chauffeurs</a>
+        <a href="map">Liste des chauffeurs disponibles</a>
         <h2>Mon historique</h2>
     </body>
 </html>

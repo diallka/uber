@@ -7,11 +7,14 @@ package ubber.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import ubber.entity.Conducteur;
+import ubber.service.ConducteurService;
 
 /**
  *
@@ -23,6 +26,21 @@ public class ConnexionConducteurServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
+         //Récuperer params formulaire
+        String login = req.getParameter("login");
+        String password = req.getParameter("password");
+
+        //Récuperer l'utilisateur correspondant en BDD
+        //new UtilisateurService().rechercheParLoginEtMdp(login, mdp);
+        //test***************************************************************
+        Conducteur cond = new ConducteurService().recupererIdParLogin(login);
+//        long idConducteur = cond.getId();
+//        req.setAttribute("id", idConducteur);
+        
+     
+        //Fin test***************************************************************
+        
+        Conducteur conducteur = new ConducteurService().connecterParLoginEtMdp(login, password);
         resp.sendRedirect("espace_perso_conducteur");
     }
 
