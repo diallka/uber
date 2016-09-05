@@ -210,11 +210,9 @@ function detailler(id) {
 
 
 //---------Calculer trajet----------
-calculate = function (km,id) {
+calculate = function (km, id) {
     origin = document.getElementById('origin').value; // Le point départ
     destination = document.getElementById('destination').value; // Le point d'arrivé
-
-
 
     if (origin && destination) {
         var request = {
@@ -232,12 +230,12 @@ calculate = function (km,id) {
         directionsService.route(request, function (response, status) { // Envoie de la requête pour calculer le parcours
             if (status == google.maps.DirectionsStatus.OK) {
                 direction.setDirections(response);
-                var recap = "Distance: " + Math.ceil(response.routes[0].legs[0].distance.value / 1000) + " km</br>"
+                var recap = "Distance: " + Math.ceil(response.routes[0].legs[0].distance.value / 1000) + " km<br />"
                         + "Durée: " + Math.floor(response.routes[0].legs[0].duration.value / 3600) + " h " + Math.ceil((response.routes[0].legs[0].duration.value % 3600) / 60) + " min"
-                        + "<br>Prix total: " + Math.ceil((response.routes[0].legs[0].distance.value / 1000) * km)+" euro(s)"
-                        +'<br><button style="position:absolute;top:350px;left:740px">Reserver</button>'
-                        +'<br><button  id="payement" style="position:absolute;top:350px;left:600px" onclick="payer('+id+destination+')">Payer la course</button>'
-                            +'<div id ="resultpayer"></div>' ;
+                        + "<br />Prix total: " + Math.ceil((response.routes[0].legs[0].distance.value / 1000) * km)+" euro(s)"
+                        + '<br /><button>Reserver</button>'
+                        + '<br /><button id="payement" onclick="payer(' + id + ', \"' + destination + '\")">Payer la course</button>'
+                        + '<div id="resultpayer"></div>';
                         
                 
                 $('#recapitulatif').html(recap);
@@ -275,10 +273,10 @@ $('#payement').on('click', function(){
          //url: "payer_conducteur?id=" +id + "destination=" +destination ,
          url: "payer_conducteur" ,
           data: '{"id": "' + id + '", "destination": "' + destination +'"}',
-         data: {
-             id : "id",
-             destination: "destination"
-         },
+//         data: {
+//             id : "id",
+//             destination: "destination"
+//         },
         // Le délai maximun en millisecondes de traitement de la demande
        timeout: 4000,
 
