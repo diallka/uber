@@ -13,7 +13,7 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 50.6075138, lng: 3.1546705},
-        zoom: 13
+        zoom: 11
     });
 
 
@@ -236,7 +236,7 @@ calculate = function (km,id) {
                         + "Durée: " + Math.floor(response.routes[0].legs[0].duration.value / 3600) + " h " + Math.ceil((response.routes[0].legs[0].duration.value % 3600) / 60) + " min"
                         + "<br>Prix total: " + Math.ceil((response.routes[0].legs[0].distance.value / 1000) * km)+" euro(s)"
                         +'<br><button style="position:absolute;top:350px;left:740px">Reserver</button>'
-                        +'<br><button  id="payement" style="position:absolute;top:350px;left:600px" onclick="payer('+id+')">Payer la course</button>'
+                        +'<br><button  id="payement" style="position:absolute;top:350px;left:600px" onclick="payer('+id+destination+')">Payer la course</button>'
                             +'<div id ="resultpayer"></div>' ;
                         
                 
@@ -256,7 +256,7 @@ function effacer() {
 
 /****PAYEMENT*****/
 
-function payer(id){
+function payer(id,destination){
 
  // Au clic sur le bouton #search je lance la fonction
 $('#payement').on('click', function(){
@@ -272,8 +272,13 @@ $('#payement').on('click', function(){
         method: "POST",
 
         // Adresse à laquelle la requête est envoyée
-         url: "PayerConducteurServlet?id="+id ,
-
+         //url: "payer_conducteur?id=" +id + "destination=" +destination ,
+         url: "payer_conducteur" ,
+          data: '{"id": "' + id + '", "destination": "' + destination +'"}',
+         data: {
+             id : "id",
+             destination: "destination"
+         },
         // Le délai maximun en millisecondes de traitement de la demande
        timeout: 4000,
 

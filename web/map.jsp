@@ -29,7 +29,7 @@
         
 
 
-        <script src="app2.js"></script>
+        <script src="app.js"></script>
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC95GpgAzzfx4qDEDw-_G76aMlpwtvoSc&callback=initMap">
         </script>
