@@ -13,9 +13,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import ubber.dao.ConducteurDAO;
 import ubber.entity.Commande;
 import ubber.entity.Conducteur;
 import ubber.service.CommandeService;
+import ubber.service.ConducteurService;
 
 /**
  *
@@ -28,8 +31,10 @@ public class EspacePersoConducteur extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
 
-        //long idConducteur = (long) req.getSession().getAttribute("id");
+        long id = (long) req.getSession().getAttribute("idCond");
+        Conducteur conducteur = new ConducteurService().RecupererUnConducteur(id);
         
+        req.setAttribute("cond", conducteur);
         //String name = req.getUserPrincipal().getName();
         //Mettre ceci dans la JSP      ${pageContext.request.userPrincipal.name}
         //long idConducteur = Long.parseLong(req.getParameter("id"));

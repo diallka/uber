@@ -43,11 +43,15 @@
         <div id="wrapper">
 
             <!-- Navigation -->
+            
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
 
                 <!--                    DASHBOARD-->
-                <h2 class="page-header">ESPACE PERSONNEL CHAUFFEUR</h2>
+                <h2 class="page-header">  <i>Bienvenue</i> ${cond.nom} ${cond.prenom}</h2>
+                  ${cond.email} <br/>
+                  Age: ${cond.age} ans <br/>
+                  <a href="accueil">Déconnexion</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -172,6 +176,10 @@
             </div>
         </div>
     </div>
+
+
+ 
+    <h1>Id conducteur</h1>
     
     <div>
         <button id="accepter">Accepter</button> <br/>

@@ -7,13 +7,12 @@ var map;
 var details;
 var details2 = "";
 var km;
-var id;
 function initMap() {
     details = "";
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 50.6075138, lng: 3.1546705},
-        zoom: 11
+        zoom: 13
     });
 
 
@@ -188,12 +187,10 @@ function detailler(id) {
                 + '<input type="text" name="origin" id="origin">'
                 + '<br><br><label>Destination :</label>'
                 + '<input type="text" name="destination" id="destination">'
-                + '<br><br><input type="button" value="Calculer l\'itinéraire" onclick="calculate('+objData2.prix_km+','+objData2.id+')">'
+                + '<br><br><input type="button" value="Calculer l\'itinéraire" onclick="calculate('+objData2.prix_km+')">'
                 + '</form><br><hr>'
                 + '<br><br><div id="recapitulatif"></div>'
-                + '<br><br><div id="panel"></div>'
-               
-        ;
+                + '<br><br><div id="panel"></div>';
 
         $("#details").html(details2);
 
@@ -207,26 +204,14 @@ function detailler(id) {
 
 
 }
-//Recuper client **************************************
-//   $.ajax({
-//        method: "POST",
-//        url: "reuperer_client?id=" + idClient
-//
-//    })
-//            .done(function (msg) {
-//                maFonction(msg);
-//            });
-//    function maFonction(data)
-//    {
-//        var myData = JSON.parse(data);
-//
-//    }
 
-//Fin recuperer client*********************************
+
 //---------Calculer trajet----------
-calculate = function (km, id) {
+calculate = function (km) {
     origin = document.getElementById('origin').value; // Le point départ
     destination = document.getElementById('destination').value; // Le point d'arrivé
+
+
 
     if (origin && destination) {
         var request = {
@@ -244,13 +229,10 @@ calculate = function (km, id) {
         directionsService.route(request, function (response, status) { // Envoie de la requête pour calculer le parcours
             if (status == google.maps.DirectionsStatus.OK) {
                 direction.setDirections(response);
-                var recap = "Distance: " + Math.ceil(response.routes[0].legs[0].distance.value / 1000) + " km<br />"
+                var recap = "Distance: " + Math.ceil(response.routes[0].legs[0].distance.value / 1000) + " km</br>"
                         + "Durée: " + Math.floor(response.routes[0].legs[0].duration.value / 3600) + " h " + Math.ceil((response.routes[0].legs[0].duration.value % 3600) / 60) + " min"
-                        + "<br />Prix total: " + Math.ceil((response.routes[0].legs[0].distance.value / 1000) * km)+" euro(s)"
-                        + '<br /><button onclick="reserver()">Reserver</button>'
-                        + '<br /><button id="payement" onclick="payer('+ id +')">Payer la course</button>'
-                        + '<div id="resultpayer"></div>';
-                        
+                        + "<br>Prix total: " + Math.ceil((response.routes[0].legs[0].distance.value / 1000) * km)+" euro(s)"
+                        +'<br><button style="position:absolute;top:350px;left:740px">Reserver</button>';
                 
                 $('#recapitulatif').html(recap);
 
@@ -265,67 +247,9 @@ function effacer() {
     $("#details").empty();
 }
 
-//Reservation************
-//function reserver(idClient){
-//    $.ajax({
-//        method: "POST",
-//        url: "mettre_en_session_reservation?id="+idClient ,
-//         success: function (data) {
-//           
-//        },
-//
-//        // La fonction à appeler si la requête n'a pas abouti
-//        error: function() {
-//          
-//        }
-//    });
-//}
-//Fin reservation********
 
-/****PAYEMENT*****/
-
-function payer(id){
-
- // Au clic sur le bouton #search je lance la fonction
-//$('#payement').on('click', function(){
-    
-   
-    // J'initialise le variable box
-    var box = $('#resultpayer');
-
-    // Je définis ma requête ajax
-    $.ajax({
-        
-        //Methode Post
-        method: "POST",
-
-        // Adresse à laquelle la requête est envoyée
-        //url: "payer_conducteur?id="+id ,
-        url: "payer_conducteur?id="+id ,
-//         url: "payer_conducteur" ,
-//          data: '{"id": "' + id + '", "destination": "' + destination +'"}',
-//         data: {
-//             id : "id",
-//             destination: "destination"
-//         },
-        // Le délai maximun en millisecondes de traitement de la demande
-       
-        //timeout: 4000,
-        // La fonction à apeller si la requête aboutie
-        success: function (data) {
-            // Je charge les données dans box
-            
-            
-            box.html(data+"Payement validé");
-        },
-
-        // La fonction à appeler si la requête n'a pas abouti
-        error: function() {
-            // J'affiche un message d'erreur
-            box.html("Désolé, Payement refusé.");
-        }
-
-    });
-
-//});
-}
+/*
+ 50.610005         3.154671
+ 50.6012893        3.1314967
+ 50.591237         3.125834
+ */

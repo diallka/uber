@@ -40,4 +40,8 @@ public class ConducteurService {
         return new ConducteurDAO().recupererIdParLogin(login);
     }
 //Fin test
+
+    public Conducteur RecupererUnConducteur(long id) {
+        return new ConducteurDAO().RecupererUnConducteur(id);
+    }
 }

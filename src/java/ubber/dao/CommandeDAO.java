@@ -30,7 +30,8 @@ public class CommandeDAO {
     public List<Commande> listerCommande(long idConducteur) {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         
-        return em.createQuery("SELECT c FROM Commande c WHERE c.conducteur_id=:id_conducteur").setParameter("id_conducteur", idConducteur).getResultList();
+        return em.createNativeQuery("SELECT * WHERE c.conducteur_id = cd.id AND c.conducteur_id = id_conducteur")
+                .setParameter("id_conducteur", idConducteur).getResultList();
 
     }
 

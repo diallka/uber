@@ -27,16 +27,22 @@ public class ConnexionConducteurServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
          //Récuperer params formulaire
+      
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
         //Récuperer l'utilisateur correspondant en BDD
         //new UtilisateurService().rechercheParLoginEtMdp(login, mdp);
         //test***************************************************************
-        Conducteur cond = new ConducteurService().recupererIdParLogin(login);
-//        long idConducteur = cond.getId();
-//        req.setAttribute("id", idConducteur);
         
+        Conducteur cond = new ConducteurService().recupererIdParLogin(login);
+        
+         req.getSession().setAttribute("idCond", cond.getId());
+         //req.getSession().setAttribute("idCond", cond.getId());
+          
+//        req.setAttribute("id", idConducteur);
+        //Conducteur cond = new Conducteur();
+        //req.getSession().setAttribute("id", id);
      
         //Fin test***************************************************************
         

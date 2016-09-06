@@ -13,6 +13,7 @@
     </head>
     <body>
         <h2>Mon espace personnel</h2>
+        <a href="accueil">Déconnexion</a>
         <div>
             
         </div>

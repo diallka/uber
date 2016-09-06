@@ -25,7 +25,23 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class Conducteur implements Serializable {
-    public enum Genre {HOMME,FEMME; }
+   
+  
+    
+//-----------------    
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+     public enum Genre {HOMME,FEMME; }
     public enum Disponible {OUI,NON;}
     
     private String nom;
@@ -223,21 +239,6 @@ public class Conducteur implements Serializable {
  
     
 
-  
-    
-//-----------------    
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Override
     public int hashCode() {
@@ -261,7 +262,9 @@ public class Conducteur implements Serializable {
 
     @Override
     public String toString() {
-        return "ubber.entity.Conducteur[ id=" + id + " ]";
+        return "Conducteur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age + ", email=" + email + ", genre=" + genre + ", photo=" + photo + ", date_inscription=" + date_inscription + ", disponible=" + disponible + ", position_latitude=" + position_latitude + ", position_longitude=" + position_longitude + ", login=" + login + ", password=" + password + ", adresse_demandee=" + adresse_demandee + ", marque_auto=" + marque_auto + ", modele=" + modele + ", nb_places_dispo=" + nb_places_dispo + ", prix_km=" + prix_km + ", total_notation=" + total_notation + ", nb_notes=" + nb_notes + ", commandes=" + commandes + '}';
     }
+
+  
     
 }

@@ -6,6 +6,7 @@
 package ubber.servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,9 +32,11 @@ public class PayerConducteurServlet extends HttpServlet {
         Conducteur cond = new Conducteur();
         cond.setId(idConducteur);
         
+        
         Commande cmd = new Commande();
         cmd.setConducteur(cond);
         cmd.setAdresse_destination(destination);
+        cmd.setDate(new Date());
         
         new CommandeService().creerCommande(cmd);
         

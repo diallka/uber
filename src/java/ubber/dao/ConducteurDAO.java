@@ -22,7 +22,7 @@ public class ConducteurDAO {
         return em.createQuery("SELECT c FROM Conducteur c").getResultList();
     } 
     
-   public Conducteur RecupererUnConducteur(int id) {
+   public Conducteur RecupererUnConducteur(long id) {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         Query query=em.createQuery("SELECT c FROM Conducteur c WHERE c.id=:un");
         query.setParameter("un", id);
@@ -50,6 +50,7 @@ public class ConducteurDAO {
        Query query = em.createQuery("SELECT c FROM Conducteur c WHERE c.login=:monLogin AND c.password=:monMdp");
        query.setParameter("monLogin", login);
        query.setParameter("monMdp", password);
+       
        return (Conducteur) 
                query.getSingleResult();
     }
@@ -57,8 +58,8 @@ public class ConducteurDAO {
     //Test....................................................
     public Conducteur recupererIdParLogin(String login) {
          EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
-        Query query=em.createQuery("SELECT c FROM Conducteur c WHERE c.login=:log");
-        query.setParameter("log", login);
+        Query query=em.createQuery("SELECT c FROM Conducteur c WHERE c.login=:login");
+        query.setParameter("login", login);
         return (Conducteur)query.getSingleResult();
     }
     //Fin test...............

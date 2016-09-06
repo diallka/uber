@@ -31,7 +31,7 @@ public class RecupUnCondServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        int id = Integer.parseInt(req.getParameter("id"));
+        long id = Long.parseLong(req.getParameter("id"));
         
         System.out.println("id...."+id);
         Conducteur conducteur = new ConducteurDAO().RecupererUnConducteur(id);
